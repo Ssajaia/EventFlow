@@ -1,0 +1,47 @@
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+
+## Build outputs
+[Bb]in/
+[Oo]bj/
+out/
+
+## NuGet
+*.nupkg
+**/packages/
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+## ASP.NET
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+
+## Docker volumes (local runtime data)
+docker/volumes/
+
+## Secrets - NEVER commit real secrets in production
+# secrets/
+
+## OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+## Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+## NOTE: .env files are intentionally tracked in this repository.
+## In production, inject secrets via CI/CD secrets manager or a vault.
