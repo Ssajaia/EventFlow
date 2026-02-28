@@ -2,7 +2,7 @@ using System.Security.Claims;
 using EventFlow.CoreService.Application.DTOs;
 using EventFlow.CoreService.Application.Interfaces;
 using EventFlow.SharedKernel.DTOs;
-using EventFlow.SharedKernel.Extensions;
+using EventFlow.CoreService.API.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
