@@ -10,7 +10,6 @@ Env.Load();
 
 var host = Host.CreateDefaultBuilder(args)
     .UseSerilog((ctx, cfg) => cfg
-        .ReadFrom.Configuration(ctx.Configuration)
         .Enrich.FromLogContext()
         .Enrich.WithProperty("Service", "notification-service")
         .WriteTo.Console())
@@ -51,7 +50,7 @@ var host = Host.CreateDefaultBuilder(args)
             });
         });
 
-        services.AddHealthChecks().AddNpgsql(connectionString, name: "postgres");
+        services.AddHealthChecks().AddNpgSql(connectionString);
     })
     .Build();
 

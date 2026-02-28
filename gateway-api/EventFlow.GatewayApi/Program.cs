@@ -61,7 +61,7 @@ builder.Services.AddOpenTelemetry()
     .WithTracing(t => t.AddAspNetCoreInstrumentation());
 
 builder.Services.AddHealthChecks()
-    .AddRedis(redisHost, name: "redis");
+    .AddRedis(redisHost);
 
 var app = builder.Build();
 

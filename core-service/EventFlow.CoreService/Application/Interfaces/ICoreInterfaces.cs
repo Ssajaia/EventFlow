@@ -1,6 +1,7 @@
 using EventFlow.CoreService.Application.DTOs;
 using EventFlow.CoreService.Domain.Entities;
 using EventFlow.SharedKernel.DTOs;
+using DomainEvent = EventFlow.CoreService.Domain.Entities.Event;
 
 namespace EventFlow.CoreService.Application.Interfaces;
 
@@ -16,17 +17,17 @@ public interface IEventService
 
 public interface IEventRepository
 {
-    Task<Event?> GetByIdAsync(Guid id, CancellationToken ct = default);
-    Task<(IEnumerable<Event> Items, int Total)> GetPagedAsync(int page, int pageSize, CancellationToken ct = default);
-    Task<(IEnumerable<Event> Items, int Total)> GetByOwnerPagedAsync(Guid ownerId, int page, int pageSize, CancellationToken ct = default);
-    Task AddAsync(Event ev, CancellationToken ct = default);
+    Task<DomainEvent?> GetByIdAsync(Guid id, CancellationToken ct = default);
+    Task<(IEnumerable<DomainEvent> Items, int Total)> GetPagedAsync(int page, int pageSize, CancellationToken ct = default);
+    Task<(IEnumerable<DomainEvent> Items, int Total)> GetByOwnerPagedAsync(Guid ownerId, int page, int pageSize, CancellationToken ct = default);
+    Task AddAsync(DomainEvent ev, CancellationToken ct = default);
     Task SaveChangesAsync(CancellationToken ct = default);
-    void Remove(Event ev);
+    void Remove(DomainEvent ev);
 }
 
 public interface IEventPublisher
 {
-    Task PublishCreatedAsync(Event ev, string correlationId, CancellationToken ct = default);
-    Task PublishUpdatedAsync(Event ev, string correlationId, CancellationToken ct = default);
+    Task PublishCreatedAsync(DomainEvent ev, string correlationId, CancellationToken ct = default);
+    Task PublishUpdatedAsync(DomainEvent ev, string correlationId, CancellationToken ct = default);
     Task PublishDeletedAsync(Guid eventId, Guid ownerId, string correlationId, CancellationToken ct = default);
 }

@@ -1,7 +1,7 @@
 using EventFlow.CoreService.Application.Interfaces;
-using EventFlow.CoreService.Domain.Entities;
 using EventFlow.SharedKernel.Messaging;
 using MassTransit;
+using DomainEvent = EventFlow.CoreService.Domain.Entities.Event;
 
 namespace EventFlow.CoreService.Infrastructure.Messaging;
 
@@ -16,7 +16,7 @@ public class MassTransitEventPublisher : IEventPublisher
         _logger = logger;
     }
 
-    public async Task PublishCreatedAsync(Event ev, string correlationId, CancellationToken ct = default)
+    public async Task PublishCreatedAsync(DomainEvent ev, string correlationId, CancellationToken ct = default)
     {
         var message = new EventCreatedMessage
         {
@@ -31,7 +31,7 @@ public class MassTransitEventPublisher : IEventPublisher
         _logger.LogInformation("[{CorrelationId}] Published EventCreatedMessage for {EventId}", correlationId, ev.Id);
     }
 
-    public async Task PublishUpdatedAsync(Event ev, string correlationId, CancellationToken ct = default)
+    public async Task PublishUpdatedAsync(DomainEvent ev, string correlationId, CancellationToken ct = default)
     {
         var message = new EventUpdatedMessage
         {

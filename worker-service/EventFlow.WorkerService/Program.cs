@@ -9,7 +9,6 @@ Env.Load();
 
 var host = Host.CreateDefaultBuilder(args)
     .UseSerilog((ctx, cfg) => cfg
-        .ReadFrom.Configuration(ctx.Configuration)
         .Enrich.FromLogContext()
         .Enrich.WithProperty("Service", "worker-service")
         .WriteTo.Console())
@@ -50,7 +49,7 @@ var host = Host.CreateDefaultBuilder(args)
         });
 
         services.AddHealthChecks()
-            .AddNpgsql(connectionString, name: "postgres");
+            .AddNpgSql(connectionString);
     })
     .Build();
 

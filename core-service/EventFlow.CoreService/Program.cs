@@ -106,7 +106,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddHealthChecks()
-    .AddNpgsql(connectionString, name: "postgres");
+    .AddNpgSql(connectionString);
 
 var app = builder.Build();
 

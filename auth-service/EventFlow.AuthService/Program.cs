@@ -114,8 +114,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddHealthChecks()
-    .AddNpgsql(connectionString, name: "postgres")
-    .AddRedis(redisHost, name: "redis");
+    .AddNpgSql(connectionString)
+    .AddRedis(redisHost);
 
 var app = builder.Build();
 

@@ -19,7 +19,7 @@ public class RefreshToken
         {
             Id = Guid.NewGuid(),
             UserId = userId,
-            Token = Convert.ToBase64String(Guid.NewGuid().ToByteArray() + Guid.NewGuid().ToByteArray()),
+            Token = Convert.ToBase64String([.. Guid.NewGuid().ToByteArray(), .. Guid.NewGuid().ToByteArray()]),
             ExpiresAt = DateTime.UtcNow.AddDays(expiryDays),
             IsRevoked = false,
             CreatedAt = DateTime.UtcNow
